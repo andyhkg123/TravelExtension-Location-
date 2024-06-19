@@ -1,0 +1,385 @@
+* {
+  margin: 0;
+}
+/*html to set the extension width and height */
+/*please change the %width and %height* of weather card below */
+
+/* --------------------------------------------------flip card-----------------------------------------*/
+
+html {
+  width: 550px;
+  height: 550px;
+}
+
+.flip-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hoverclass {
+  height: 100%;
+  width: 60%;
+}
+
+.middle {
+  margin: 1.2em;
+  height: 100%;
+  width: 100%;
+  border: 1px black;
+  border-radius: 15px;
+  transition: 1s;
+  transform-style: preserve-3d;
+}
+.front,
+.back {
+  backface-visibility: hidden;
+}
+
+.back {
+  left: -5%;
+  position: absolute;
+  transform: rotateY(180deg);
+  height: 100%;
+  width: 10cm;
+  border-radius: 15px;
+  top: 0em;
+  margin: 0;
+  padding: 0;
+}
+
+.middle.show {
+  transform: rotateY(180deg);
+}
+
+/*  SAVE FOR LATER , UNUSED
+  .back_container {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 100%;
+  }
+  */
+
+/* --------------------------------------------------flip card-----------------------------------------*/
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 120%;
+  height: 100%;
+  width: 100%; /* Change this to a fixed width */
+  max-width: 600px;
+}
+
+/* Adjust other styles as needed */
+
+.card {
+  background: #060606d0;
+  color: white;
+  border-radius: 15px;
+  padding: 1.2em;
+  width: 400px;
+  max-width: 450px;
+  text-align: center;
+  justify-content: center;
+  /* Updated */
+}
+
+.search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #7c7c7c2b;
+  border-radius: 30px;
+  height: 44px;
+}
+
+button {
+  margin: 0.5em;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  height: 44px;
+  width: 44px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+input.search-bar {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0.3em 1em;
+  border-radius: 24px;
+  background: transparent;
+  color: white;
+  font-family: inherit;
+  font-size: 105%;
+  width: calc(100% - 100px);
+}
+
+button:hover {
+  background: transparent;
+}
+
+.flex {
+  align-items: center;
+  text-align: center;
+}
+
+.description {
+  text-transform: capitalize;
+  margin-left: 8px;
+}
+
+.weather.loading {
+  visibility: hidden;
+  max-height: 20px;
+  position: relative;
+}
+
+.weather.loading:after {
+  visibility: visible;
+  content: "Loading...";
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 20px;
+}
+
+.city {
+  position: absolute;
+  top: 4.3em;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+h1.temp {
+  /* temp shown on screen */
+  position: absolute;
+  font-size: 3.2em;
+  font-weight: bold;
+  top: 1.6em;
+  left: -20px;
+  margin: 0;
+  margin-bottom: 0.1em;
+}
+
+.twobtn {
+  height: 100%;
+  width: 80%;
+  margin-top: 20px;
+  /* Your custom top margin */
+  margin-bottom: 20px;
+  /* Your custom bottom margin */
+  margin-left: auto;
+  /* Set left margin to auto */
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.forecastrow {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 20px;
+  height: auto; /* Updated */
+  width: 100%;
+  justify-content: space-evenly;
+  overflow: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.forecastrow > * {
+  margin-left: 2.5em;
+}
+
+.forecastrow.show {
+  max-height: 500px; /* Adjust the value to fit your content */
+  opacity: 1;
+}
+
+.forecastbtn {
+  margin-top: 1em;
+  padding: 10px;
+  background-color: transparent;
+  transition: background-color 0.5s ease;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.forecastbtn:hover {
+  background-color: rgb(31, 247, 247, 0.5);
+  cursor: pointer !important;
+}
+
+.refresh {
+  border-radius: 5px;
+  position: relative;
+  left: 160px;
+  top: 10px;
+}
+
+.stockbtn {
+  font-size: 20px;
+  position: relative;
+  left: 140px;
+  top: -15px;
+  cursor: pointer !important;
+}
+
+.stockbtn:hover {
+  background-color: rgb(31, 247, 247, 0.5);
+  cursor: pointer !important;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.weatherbtn {
+  padding: 5px;
+
+  font-size: 20px;
+  position: relative;
+  left: 280px;
+  top: 40px;
+  cursor: pointer !important;
+}
+
+.weatherbtn:hover {
+  background-color: rgb(31, 247, 247, 0.5);
+  cursor: pointer !important;
+  border-radius: 5px;
+}
+
+/* --------------------------------------------------Stock App-----------------------------------------*/
+/* Import Google Font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 10px;
+  background: black;
+}
+::selection {
+  color: #fff;
+  background: #675afe;
+}
+.wrapper {
+  position: relative;
+  width: 400px;
+  max-width: 470px;
+  height: 100%;
+  padding: 20px;
+  border-radius: 15px;
+  background: #ffffffd0;
+
+  /* box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05); */
+}
+.wrapper header {
+  position: absolute;
+  top: 0.5em;
+  left: 1.5em;
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+}
+.wrapper form {
+  margin: 40px 0 20px 0;
+}
+form :where(input, select, button) {
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+}
+form p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+form input {
+  height: 50px;
+  font-size: 17px;
+  padding: 0 15px;
+  border: 1px solid #999;
+}
+form input:focus {
+  padding: 0 14px;
+  border: 2px solid #675afe;
+}
+form .drop-list {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.drop-list .select-box {
+  display: flex;
+  width: 115px;
+  height: 45px;
+  align-items: center;
+  border-radius: 5px;
+  justify-content: center;
+  border: 1px solid #999;
+}
+.select-box img {
+  max-width: 21px;
+}
+.select-box select {
+  width: auto;
+  font-size: 16px;
+  background: none;
+  margin: 0 -5px 0 5px;
+}
+.select-box select::-webkit-scrollbar {
+  width: 8px;
+}
+.select-box select::-webkit-scrollbar-track {
+  background: #fff;
+}
+.select-box select::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+  border-right: 2px solid #ffffff;
+}
+.drop-list .icon {
+  cursor: pointer;
+  margin-top: 30px;
+  font-size: 22px;
+}
+form .exchange-rate {
+  font-size: 17px;
+  margin: 20px 0 30px;
+}
+form button {
+  height: 52px;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  background: #675afe;
+  transition: 0.3s ease;
+}
+form button:hover {
+  background: #4534fe;
+}
